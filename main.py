@@ -1,17 +1,17 @@
-from flask import Flask, abort, send_file
+from flask import Flask, abort, send_file, request
 
 from FileSystem import FileSystem
 from Config import Config
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=['GET'])
 def get_file_list():
     return {
         "archives": FileSystem.get_archives(),
     }
 
-@app.route("/get/<archive_name>")
+@app.route("/get/<archive_name>", methods=['GET'])
 def get_archive_by_name(archive_name: str):
     archives: List[str] = FileSystem.get_archives()
     if archive_name not in archives:
