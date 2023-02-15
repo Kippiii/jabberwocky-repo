@@ -13,3 +13,5 @@ poetry install
 poetry shell
 flask --app main run
 ```
+
+> :warning: **If you want to allow user uploads**, please fill in your own authentication algorithm in `Auth.py::auth`.
