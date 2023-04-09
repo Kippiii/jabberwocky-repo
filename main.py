@@ -1,5 +1,8 @@
 from flask import Flask, abort, send_file, request
 from werkzeug.utils import secure_filename
+import click
+from pathlib import Path
+import logging
 
 from FileSystem import FileSystem
 from Config import Config
@@ -36,3 +39,8 @@ def put_archive():
         abort(409)
     file.save(str(Config.get_archives_path() / filename))
     return "Success!"
+
+@app.cli.command("set-path")
+@click.argument("path")
+def set_path(path: str) -> None:
+    Config.set_archives_path(Path(path))
