@@ -14,4 +14,9 @@ poetry shell
 flask --app main run
 ```
 
+To set the path where the container archives are stored, use the following command:
+```sh
+flask set-path [path]
+```
+
 > :warning: **If you want to allow user uploads**, please fill in your own authentication algorithm in `Auth.py::auth`.
