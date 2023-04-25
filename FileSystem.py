@@ -5,10 +5,12 @@ from pathlib import Path
 
 from Config import Config
 
+
 class FileSystem:
     """
     Manages the file system of the repo
     """
+
     @staticmethod
     def get_archives() -> List[str]:
         """
@@ -16,7 +18,7 @@ class FileSystem:
         """
         archives_path: Path = Config.get_archives_path()
         files: List[str] = listdir(str(archives_path))
-        return list(filter(lambda x : FileSystem.is_archive(archives_path / x), files))
+        return list(filter(lambda x: FileSystem.is_archive(archives_path / x), files))
 
     @staticmethod
     def is_archive(path: Path) -> List[str]:
